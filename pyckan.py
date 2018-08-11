@@ -3,10 +3,44 @@
 import requests
 from ckanapi import RemoteCKAN
 
+
+#API Key
 secret = '99a4919a-310e-43c1-8f4b-175b946c816c'
+demo = RemoteCKAN('http://beta.stlouisdata.org', apikey=secret)
+
+
+#Create as many resources as desired
+def update_resources():
+    filename = " "
+
+    #While the name input is NOT blank
+    while filename != "":
+        #Name displayed in big letters and on resource list
+        filename = input("Enter the name of a resource to to add to a dataset\n")
+        if filename == "":
+            break
+
+        #Choose where the resource goes
+        dataset = input("Enter the name of the existing dataset to add the file to\n")
+
+        #Enter a description for the resource
+        desc = input("Enter a description for the resource\n")
+
+        #URL of the initial values to input into the file
+        res_url = input("Enter the url for the source file\n")
+
+        #Create resource with all of those variables
+        package = demo.action.resource_create(package_id=dataset,
+                                              name=filename,
+                                              url=res_url,
+                                              notes=desc)
+        #Verify in the logs that it worked by seeing what values are in what places
+        print(package)
+
 
 def run():
     print("OpenSTL-DataExchange")
+    update_resources()
 
     ua = 'ckanapiexample/1.0 (+http://example.com/my/website)'
 
@@ -46,6 +80,7 @@ def run():
 - for_each source in sources -> create/update/patch
 
 '''
+
 
 
 
