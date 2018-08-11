@@ -12,12 +12,8 @@ def run():
 
     demo = RemoteCKAN('http://beta.stlouisdata.org', apikey=secret)
 
-    groups = demo.action.package_list(id='test_data')
-    print(groups)
-
-    pkg = demo.action.package_create(name='my-dataset', title='not going to work')
-    groups = demo.action.package_list(id='test_data')
-    print(groups)
+    packages = demo.action.package_list()
+    print(packages)
 
 if __name__ == "__main__":
     run()
