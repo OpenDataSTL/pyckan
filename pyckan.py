@@ -41,6 +41,12 @@ def run():
     pkg['resources'] = npkg['resources']
     pkg = demo.action.package_update(**pkg)
 
+''' ToDo:
+- parse_sources: 'sources dictionary" -> {source_name: source_url, data_set, group, org}
+- for_each source in sources -> create/update/patch
+
+'''
+
 
 
     #pkg = demo.action.resource_update(package_id='my-dataset3', name='test-data', id='ec2191c7-fd13-44c6-a51f-71c1081330df', url='https://raw.githubusercontent.com/OpenDataSTL/pyckan/Clarys-Branch/testdata.csv', upload='true')
