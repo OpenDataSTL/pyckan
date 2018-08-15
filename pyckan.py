@@ -4,8 +4,8 @@ import requests
 from ckanapi import RemoteCKAN
 
 
-#API Key
-secret = '99a4919a-310e-43c1-8f4b-175b946c816c'
+#secret = API Key
+secret = ''
 demo = RemoteCKAN('http://beta.stlouisdata.org', apikey=secret)
 
 
@@ -17,7 +17,7 @@ def update_resources():
     while filename != "":
         #Name displayed in big letters and on resource list
         filename = input("Enter the name of a resource to to add to a dataset.  Leave blank to finish with resources\n"
-                         "'exit' to exit")
+                         "'exit' to exit\n")
         if filename == "":
             break
         elif filename == "exit":
@@ -37,6 +37,7 @@ def update_resources():
                                               name=filename,
                                               url=res_url,
                                               notes=desc)
+
         #Verify in the logs that it worked by seeing what values are in what places
         print(package)
 
@@ -51,7 +52,7 @@ def update_datasets():
         #Name displayed in big letters and URL
         filename = input("Enter the name of a dataset to create.  \n"
                          "Will be converted to Lowercase.  Leave blank to finish with datasets\n"
-                         "'exit' to exit").lower()
+                         "'exit' to exit\n").lower()
         if filename == "":
             break
         elif filename == "exit":
@@ -63,6 +64,7 @@ def update_datasets():
         #Create resource with all of those variables
         package = demo.action.package_create(name=filename,
                                               notes=desc)
+
         #Verify in the logs that it worked by seeing what values are in what places
         print(package)
     run()
